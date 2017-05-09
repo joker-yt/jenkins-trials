@@ -1,18 +1,31 @@
-TARGET=Test
-SRC= main.cpp
-CPPFLAGS=-g
-CPPFLAGS+= -std=c++11
-CPPFLAGS_CGOVR=$(CPPFLAGS) -fprofile-arcs -ftest-coverage
-LDFLAGS_CGOVR += -fprofile-arcs
+SUBDIRS=src
+TESTDIR=test
+SAMPLEDIR=sample
+DOCDIR=doc
+TAGS=ctags
 
-all:$(TARGET)
+.PHONY: doc test clean
 
-$(TARGET): $(SRC)
-	g++ $< -o $@ $(CPPFLAGS)
+all:
+	@for i in $(SUBDIRS) ; \
+	do \
+		$(MAKE) -C $$i $@; \
+	done
+	$(TAGS) -R *
 
-gcovr: $(SRC)
-	g++ $< -o $(TARGET) $(CPPFLAGS_CGOVR) $(LDFLAGS_CGOVR)
+coverage:
 
-	# linkage確認
+test:
+	$(MAKE) -C $(TESTDIR) $@
+
+doc:
+	@for i in $(DOCDIR) ; \
+	do \
+		$(MAKE) -C $$i $@; \
+	done
+
 clean:
-	rm -f $(TARGET) *.gcno
+	@for i in $(SUBDIRS) $(TESTDIR) $(DOCDIR) ; \
+	do \
+		$(MAKE) -C $$i $@; \
+	done

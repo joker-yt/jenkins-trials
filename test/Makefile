@@ -1,5 +1,6 @@
 SRCS= test_CTestBase.cpp \
-		  test_CTestDerive.cpp
+		  test_CTestDerive.cpp \
+			test_Workload.cpp
 # TARGET+=$(subst .cpp,.bin,$(SRCS))
 CPPFLAGS=-g
 CPPFLAGS+= -std=c++11 -fPIC

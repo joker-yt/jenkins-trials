@@ -1,4 +1,5 @@
 project(jenkins-test)
+set(TARGET_NAME jtest)
 
 cmake_minimum_required(VERSION 3.2.2)
 
@@ -17,5 +18,7 @@ set(CMAKE_BUILD_TYPE Debug)
 #include_directories(${LIBI18N_INCLUDE_DIRS})
 #link_directories(${LIBI18N_LIBRARY_DIRS})
 
-add_executable(a.out ${PROJECT_SOURCE_DIR}/src/main.cpp)
-target_link_libraries(a.out)
+set(CMAKE_CXX_FLAGS "-O2 -Wall -fprofile-arcs -ftest-coverage")
+add_definitions(-coverage)
+add_executable(${TARGET_NAME} ${PROJECT_SOURCE_DIR}/src/main.cpp)
+target_link_libraries(${TARGET_NAME} gcov)

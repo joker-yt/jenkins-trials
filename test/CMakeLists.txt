@@ -13,7 +13,7 @@ include(GoogleTest)
 
 set (TARGET jenkins-test-gtest)
 add_executable(${TARGET})
-target_sources(${TARGET} PRIVATE test_CTestBase.cpp test_CTestDerive.cpp main.cpp)
+target_sources(${TARGET} PRIVATE test_CTestBase.cpp test_CTestDerive.cpp)
 target_link_libraries(${TARGET} GTest::GTest GTest::Main)
 target_include_directories(${TARGET} PRIVATE ${CMAKE_SOURCE_DIR}/src)
 

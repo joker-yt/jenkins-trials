@@ -1,8 +1,8 @@
-#include "test_common.h"
+#include <iostream>
+#include <gtest/gtest.h>
 
-int main(int argc, char *argv[]) {
-  CTestBase_main(argc, argv);
-  CTestDerive_main(argc, argv);
-
-  return 0;
+int main(int argc, char **argv)
+{
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }

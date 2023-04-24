@@ -1,10 +1,35 @@
-#include "CTestDerive.h"
-#include "test_common.h"
-#include "gmock/gmock.h"
 #include "gtest/gtest.h"
-using namespace ::testing;
+#include "test_CTestFixture.h"
+#include "CTestDerive.h"
 
-int CTestDerive_main(int argc, char *argv[]) {
-  ::testing::InitGoogleMock(&argc, argv);
-  return RUN_ALL_TESTS();
+TEST_F(test_CTestFixture, test1_derive)
+{
+    testing::internal::CaptureStdout();
+
+    CTestDerive derive;
+    derive.v_method();
+    output_ = testing::internal::GetCapturedStdout();
+
+    // "\n" is important as correct result!
+    string expected_output{"CTestDerive::v_method\nCTestBase::l_method\n"};
+
+    EXPECT_EQ(output_, expected_output)
+        << "Expected output: " << expected_output
+        << "\nActual output: " << output_;
+}
+
+TEST_F(test_CTestFixture, test2_derive)
+{
+    testing::internal::CaptureStdout();
+
+    CTestDerive derive;
+    derive.l_method();
+    output_ = testing::internal::GetCapturedStdout();
+
+    // "\n" is important as correct result!
+    string expected_output{"CTestBase::l_method\n"};
+
+    EXPECT_EQ(output_, expected_output)
+        << "Expected output: " << expected_output
+        << "\nActual output: " << output_;
 }

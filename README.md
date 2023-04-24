@@ -1,4 +1,7 @@
 # jenkins-trials
+## reference
+https://hub.docker.com/_/jenkins/
+
 ## todo
 - link, include file check
 - memory

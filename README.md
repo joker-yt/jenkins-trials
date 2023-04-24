@@ -1,4 +1,20 @@
 # jenkins-trials
+## reference
+https://hub.docker.com/_/jenkins/
+
+## Environment
+- Ubuntu 20.04
+- cmake 3.22
+- googletest 1.11.0-3
+- libgtest-dev 1.11.0-3
+- g++-11.3.0
+
+## Usage
+1. cmake -DJENKINS-TEST=ON -S . -B build
+1. cmake --build build
+1. cd build/test
+1. ctest
+
 ## todo
 - link, include file check
 - memory

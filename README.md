@@ -27,12 +27,14 @@ https://hub.docker.com/_/jenkins/
 1. (Installing Jenkins) select "Free Style Project"
 1. (Installing Jenkins) fill "git repository url"
 1. (Installing Jenkins) select CMake/CPack/CTest execution as build step
+1. (Installing Jenkins) create another CMake/CPack/CTest execution to build application
 1. (Installing Jenkins) save and start building
 
 ![add_plugin1.png](img/add_plugin1.png)
 ![repository_url.png](img/repository_url.png)
 ![build_step1.png](img/build_step1.png)
 ![build_step2.png](img/build_step2.png)
+![build_step3.png](img/build_step3.png)
 
 
 ### How to access docker container

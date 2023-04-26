@@ -8,6 +8,7 @@ https://hub.docker.com/_/jenkins/
 - googletest 1.11.0-3
 - libgtest-dev 1.11.0-3
 - g++-11.3.0
+- xsltproc
 
 ## Usage
 ### Testing itself
@@ -15,6 +16,12 @@ https://hub.docker.com/_/jenkins/
 1. cmake --build build
 1. cd build/test
 1. ctest
+
+## output the result by xml (and convering to html)
+1. export GTEST_OUTPUT="xml:/path/to/directory"
+1. ctest
+1. git clone https://github.com/adarmalik/gtest2html.git
+1. for i in `ls`; do xsltproc gtest2html.xslt ${i} > ${i%xml}html; done
 
 ### build and run docker image, container of Jenkins
 1. cd env
